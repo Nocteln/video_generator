@@ -4,7 +4,6 @@ import requests
 import os
 import json
 
-
 config = open('config.json')
 configjson = json.load(config.json)
 
@@ -36,21 +35,9 @@ response = openai.ChatCompletion.create(
 ],
 )
 
-# histoire = [{"phrase": "Il était une fois un navigateur intrépide voguant sur des océans tumultueux.", "prompt": "Un navigateur courageux, à bord d'un fier navire, affronte les vagues déchaînées et les cieux sombres."}, {"phrase": "Au cours de son voyage, le navigateur découvrit une île mystérieuse cachée parmi les brumes.", "prompt": "Une île mystérieuse émergeant des brumes, entourée d'une végétation luxuriante."}, {"phrase": "En explorant l'île, le navigateur trouva une grotte profonde et mystique, illuminée par des cristaux étincelants.", "prompt": "Un navigateur découvre une grotte cachée, illuminée par des cristaux scintillants suspendus au plafond."}, {"phrase": "Dans cette grotte, le navigateur trouva un ancien livre rempli de secrets et de savoirs anciens.", "prompt": "Un livre ancien, couvert de poussière, est découvert dans un coin de la grotte mystérieuse."}, {"phrase": "En étudiant le livre, le navigateur comprit comment déchiffrer les énigmes de l'océan.", "prompt": "Un navigateur qui observe attentivement les pages du livre ancien, en essayant de comprendre les mystères de l'océan."}, {"phrase": "Avec son nouveau savoir, le navigateur parvint à traverser les tempêtes et à découvrir des terres inexplorées.", "prompt": "Un navigateur triomphant, son navire naviguant avec confiance à travers les tempêtes, découvre des terres lointaines et inexplorées."}, {"phrase": "Et ainsi, le navigateur continua son périple, prêt à affronter de nouvelles aventures et à écrire son nom dans les annales de l'Histoire.", "prompt": "Un navigateur solitaire se tient debout sur le pont de son navire, regardant l'horizon avec détermination et prêt à embarquer pour de nouvelles aventures."}]
-
-# print(response)
-print("----")
 msgrep = response.choices[0].message.content
-print(msgrep)
-
-start_i = msgrep.find("[")
-end_i = msgrep.find("]")
-tableau_str = msgrep[start_i:end_i + 1]
-# tableau_str = tableau_str.replace("'", "\"")  # Remplace les guillemets simples par des guillemets doubles
-# tableau_str = tableau_str.replace("\\\"", "\"")
+tableau_str = msgrep[msgrep.find("["):msgrep.find("]") + 1]
 histoire = json.loads(tableau_str)
-print("----")
-print(histoire)
 
 if histoire:
     i = 0
