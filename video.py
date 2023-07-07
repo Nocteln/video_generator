@@ -53,7 +53,7 @@ print("----")
 print(histoire)
 
 if histoire:
-    i=0
+    i = 0
 
     for obj in histoire:
         phrase = obj["phrase"]
@@ -104,7 +104,7 @@ if histoire:
 
         video.write_videofile("output" + str(i) + ".mp4")
 
-        i = i+1
+        i = i + 1
         print(i)
 
     video_clips = []
@@ -127,79 +127,8 @@ if histoire:
         file_name = "output" + str(i) + ".mp4"
         if os.path.exists(file_name):
             os.remove(file_name)
-            print(file_name + "supprimé")
+            print(file_name + " bien supprimé")
 
     print("video terminée avec succes")
 else:
-    print("problème : histoire non valide")
-
-
-
-
-# img = openai.Image.create(
-#   prompt="a white siamese cat",
-#   n=1,
-#   size="1024x1024"
-# )
-# image_url = img['data'][0]['url']
-# print(img)
-
-# url_audio = "http://www.simphonics.com/library/WaveFiles/Production%20Wavefiles/Aircraft/A320%20-%20321/RUMBLE1.wav"
-# url_image = "https://www.wallpapers13.com/cool-and-beautiful-nature-desktop-wallpaper-image-1680x1050/"
-#
-# response_audio = requests.get(url_audio)
-# response_audio.raise_for_status()
-# audio_content = response_audio.content
-#
-# with open("audio.mp3", "wb") as audio_file:
-#     audio_file.write(audio_content)
-# print("Fichier audio téléchargé avec succès.")
-#
-# response_image = requests.get(url_image)
-# response_image.raise_for_status()
-# image_content = response_image.content
-# with open("image.jpg", "wb") as image_file:
-#     image_file.write(image_content)
-# print("Fichier image téléchargé avec succès.")
-#
-# with open("audio.mp3", "rb") as audio_file, open("image.jpg", "rb") as image_file, open("output.mp4", "wb") as output_file:
-#     output_file.write(audio_file.read())
-#     output_file.write(image_file.read())
-# print("Fichier MP4 créé avec succès.")
-#
-#
-#
-# # with open('image.jpg', 'wb') as f:
-# #     f.write(response.content)
-
-
-
-# audio_file = "audio.mp3"  # Remplacez par le chemin réel de votre fichier audio
-# image_file = "image.png"  # Remplacez par le chemin réel de votre fichier image
-# output_file = "output.mp4"  # Remplacez par le nom de fichier de sortie souhaité
-#
-# audio_clip = AudioFileClip(audio_file)
-# image_clip = ImageClip(image_file)
-#
-# video = image_clip.set_audio(audio_clip)
-# video.duration = audio_clip.duration
-# video.fps = 15
-#
-# video.write_videofile("output.mp4")
-
-
-[
-  {
-    "role": "user",
-    "content": "Bonjour, je voudrais faire une histoire imagée d'environ 1 minute. Pour cela, j'ai besoin d'un tableau d'objets Python avec pour chaque phrase un nouvel objet comprenant la phrase en question et un prompt pour générer l'image. Peux-tu me le faire en français s'il te plaît ?"
-  },
-  {
-    "role": "assistant",
-    "content": "[{\"phrase\": \"Il était une fois, dans une forêt enchantée...\", \"prompt\": \"forêt enchantée\"}, {\"phrase\": \"Un petit lapin blanc sautait gaiement parmi les fleurs...\", \"prompt\": \"lapin blanc parmi les fleurs\"}, {\"phrase\": \"Soudain, un immense dragon surgit des profondeurs de la terre...\", \"prompt\": \"dragon surgissant de la terre\"}, {\"phrase\": \"Une princesse courageuse se dressa devant le dragon...\", \"prompt\": \"princesse devant un dragon\"}, {\"phrase\": \"Les étoiles brillaient intensément dans le ciel nocturne...\", \"prompt\": \"ciel nocturne avec des étoiles brillantes\"}]"
-  },
-  {
-    "role": "user",
-    "content": "Peux-tu m'en générer un nouveau similaire à celui-ci ?"
-  }
-]
-
+    print("problème : histoire non valide, essayez de relancer le proggrame")
