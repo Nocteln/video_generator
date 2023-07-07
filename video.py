@@ -4,17 +4,18 @@ import requests
 import os
 import json
 
-config = open('config.json')
-configjson = json.load(config.json)
+with open('config.json') as config_file:
+    config_content = config_file.read()
+configjson = json.loads(config_content)
 
-openai.api_key = configjson.openai
+openai.api_key = configjson['openai']
 CHUNK_SIZE = 1024
-url = configjson.elevenlabs
+url = "https://api.elevenlabs.io/v1/text-to-speech/pNInz6obpgDQGcFmaJgB" # configjson.elevenlabs
 
 headers = {
     "Accept": "audio/mpeg",
     "Content-Type": "application/json",
-    "xi-api-key": "289719f06a3d086f239b72b740696118"
+    "xi-api-key": configjson["elevenlabs"]
 }
 
 response = openai.ChatCompletion.create(
@@ -58,7 +59,7 @@ if histoire:
             print("erreur dans la création de l'image:"+str(e))
             if previous_image_url:
                 img = previous_image_url
-        print(img)
+        print("image n°" + i + "générée")
         print("---------")
 
         data = {
@@ -118,4 +119,4 @@ if histoire:
 
     print("video terminée avec succes")
 else:
-    print("problème : histoire non valide, essayez de relancer le proggrame")
+   print("problème : histoire non valide, essayez de relancer le proggrame")
